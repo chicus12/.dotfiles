@@ -11,10 +11,10 @@ module.exports = {
     fontFamily: 'Fira Code, Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
-    cursorColor: 'rgba(248,28,229,0.8)',
+    cursorColor: 'rgba(255,255,229,0.8)',
 
     // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
-    cursorShape: 'BLOCK',
+    cursorShape: 'BEAM',
 
     // set to true for blinking cursor
     cursorBlink: true,
@@ -23,7 +23,7 @@ module.exports = {
     foregroundColor: '#fff',
 
     // terminal background color
-    backgroundColor: 'rgba(0, 40, 51, 0.7)',
+    backgroundColor: 'rgba(0, 40, 51, .7)',
 
     // border color (window, tabs)
     borderColor: '#839496',
@@ -31,17 +31,27 @@ module.exports = {
     // custom css to embed in the main window
     css: `
       .header_header {
-        background: rgba(0, 40, 51, 0.9) !important;
+        background: rgb(0, 40, 51) !important;
       }
     `,
 
     // custom css to embed in the terminal window
     termCSS: `
-      x-screen {
-        -webkit-font-smoothing: subpixel-antialiased !important;
+      * {
+        text-rendering: optimizeLegibility !important;
+        font-weight: light;
       }
-      x-screen x-row {
-        font-variant-ligatures: initial;
+
+      .terminal {
+        font-weight: lighter
+      }
+      .terminal .xterm-bold {
+        font-weight: normal
+      }
+      .terminal {
+        font-weight: lighter;
+      }
+      .terminal .xterm-bold {
         font-weight: normal;
       }
     `,
@@ -69,7 +79,7 @@ module.exports = {
       blue: '#268bd2',
       magenta: '#d33682',
       cyan: '#2aa198',
-      white: '#eee8d5',
+      white: '#839496',
       lightBlack: '#003541',
       lightRed: '#dc322f',
       lightGreen: '#859901',
@@ -77,7 +87,7 @@ module.exports = {
       lightBlue: '#268bd2',
       lightMagenta: '#d33682',
       lightCyan: '#2aa198',
-      lightWhite: '#eee8d5'
+      lightWhite: '#839496'
     },
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
@@ -118,12 +128,10 @@ module.exports = {
       }
     },
 
-    materialBox: {
-      backgroundOpacity: 0.7,
-      lightEffect: true,
-      user: {
-        accentColor: 'orange',
-      }
+    hyperTabs: {
+      trafficButtons: true,
+      border: true,
+      tabIconsColored: true,
     }
     // if true, on right click selected text will be copied or pasted if no
     // selection is present (true by default on Windows)
@@ -143,11 +151,11 @@ module.exports = {
   //   `project#1.0.1`
   plugins: [
     'hyper-statusline',
-    'hyper-material-box',
     'hyper-tab-icons',
     'hypercwd',
     'hyperlinks',
     'hyperterm-paste',
+    'hyper-tabs-enhanced'
   ],
 
   // in development, you can create a directory under
